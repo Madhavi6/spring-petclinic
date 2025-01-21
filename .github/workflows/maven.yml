@@ -21,6 +21,10 @@ jobs:
           java-version: 17
           distribution: 'temurin' # Options: 'temurin', 'zulu', etc.
           cache: maven
+          
+      - name: Install Maven
+        run: sudo apt-get install -y maven
+    
 
       # Install dependencies and build the project
       - name: Build with Maven
