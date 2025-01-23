@@ -1,8 +1,7 @@
 name: Maven Build
 
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:
       
 
 jobs:
@@ -21,23 +20,25 @@ jobs:
           java-version: 17
           distribution: 'temurin' # Options: 'temurin', 'zulu', etc.
           cache: maven
+      - name: Build with Maven Wrapper
+        run: ./mvnw -B verify
           
-      - name: Install Maven
-        run: sudo yum install -y maven
+    #  - name: Install Maven
+    #    run: sudo yum install -y maven
     
 
       # Install dependencies and build the project
-      - name: Build with Maven
-        run: mvn clean install --batch-mode
+     # - name: Build with Maven
+      #  run: mvn clean install --batch-mode
 
       # Run tests
-      - name: Run Tests
+      #- name: Run Tests
         run: mvn test --batch-mode
 
       # Optionally upload build artifacts
-      - name: Upload Build Artifacts
-        if: success()
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-artifacts
-          path: target/*.jar
+      #- name: Upload Build Artifacts
+      #  if: success()
+       # uses: actions/upload-artifact@v3
+       # with:
+        #  name: build-artifacts
+         # path: target/*.jar
