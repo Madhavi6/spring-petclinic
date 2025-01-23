@@ -2,11 +2,18 @@ name: PetClinic Workflow
 on:
     workflow_dispatch:
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v3
-            # Maven build
-            # Sonar Qube
-            # JFrog Artifactory
+  build:
+    uses: ./.github/workflows/maven.yml
+    secrets: inherit
+  sonar:
+    uses: ./.github/workflows/sonarcloud.yml
+    secrets: inherit
+    needs: build
+  test:
+    uses: ./.github/workflows/test.yml
+    needs: sonar
+    secrets: inherit  
+  imagepush:
+    uses: ./.github/workflows/imagepush.yml
+    needs: test
+    secrets: inherit  
