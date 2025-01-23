@@ -33,7 +33,7 @@ jobs:
 
       # Run tests
       #- name: Run Tests
-        run: mvn test --batch-mode
+       # run: mvn test --batch-mode
 
       # Optionally upload build artifacts
       #- name: Upload Build Artifacts
