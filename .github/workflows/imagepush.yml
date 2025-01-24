@@ -11,6 +11,9 @@ jobs:
       DOCKER_IMAGE: madhavip/petclinic:${{ github.sha }}
 
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        
       - name: Build Docker Image
         run: |
           sudo docker build -t ${{ env.DOCKER_IMAGE }} .
