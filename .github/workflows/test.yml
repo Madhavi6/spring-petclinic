@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     #needs: build  # Ensures test only runs after build succeeds
     steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Run Unit Tests
         run: mvn -f ./pom.xml test
 
