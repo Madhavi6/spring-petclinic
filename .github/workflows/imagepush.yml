@@ -17,6 +17,7 @@ jobs:
       - name: Build Docker Image
         run: |
           mvn clean package
+          ls ./target/spring-petclinic-3.2.0-SNAPSHOT.jar
           sudo docker build -t ${{ env.DOCKER_IMAGE }} .
           sudo docker save ${{ env.DOCKER_IMAGE }} > docker_image.tar
 
