@@ -46,5 +46,7 @@ jobs:
           JF_URL: https://trial48lwkd.jfrog.io
           JF_MVNACCESS_TOKEN: ${{ secrets.JF_MVNACCESS_TOKEN }}
       - name: Upload JAR to JFrog
-        run: |           
+        run: |  
+          jf rt config --url=JF_URL --access-token=JF_MVNACCESS_TOKENS
+         
           jf rt u "target/*.jar" "petclinic/"     
