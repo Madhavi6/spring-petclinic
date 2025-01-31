@@ -47,4 +47,5 @@ jobs:
           JF_MVNACCESS_TOKEN: ${{ secrets.JF_MVNACCESS_TOKEN }}
       - name: Upload JAR to JFrog
         run: |
+           which jf
            sudo jf rt u "target/*.jar" "petclinic/"     
