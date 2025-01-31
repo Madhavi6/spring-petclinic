@@ -47,5 +47,7 @@ jobs:
           JF_MVNACCESS_TOKEN: ${{ secrets.JF_MVNACCESS_TOKEN }}
       - name: Upload JAR to JFrog
         run: |
+           curl -fL https://install-cli.jfrog.io | sh
+           sudo mv jf /usr/local/bin/
            which jf
            sudo jf rt u "target/*.jar" "petclinic/"     
